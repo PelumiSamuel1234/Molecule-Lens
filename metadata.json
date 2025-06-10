@@ -1,0 +1,6 @@
+{
+  "name": "Molecule Lens",
+  "description": "A web application to search for chemical molecules, view their 2D and 3D structures, properties, and get AI-generated insights. Data is sourced from PubChem and enhanced by the Gemini API.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

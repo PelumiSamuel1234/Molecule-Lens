@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# IDE specific
+.vscode/
+.idea/
+
+# If you ever add build outputs
+# dist/
+# build/
+
+# If you ever add node_modules
+# node_modules/
