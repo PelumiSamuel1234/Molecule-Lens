@@ -266,7 +266,7 @@ const App: React.FC = () => {
       <footer className="text-center mt-12 py-6 border-t border-gray-300">
         <p className="text-sm text-gray-500">
           Molecule Lens &copy; {new Date().getFullYear()}. 
-          Designed by OLAWAMIDE SAMUEL.
+          All rights reserved OLAWAMIDE SAMUEL.
         </p>
         <p className="text-sm text-gray-500 mt-2">
           <a href="#admin-login" onClick={navigateToAdminLogin} className="hover:underline text-brand-secondary">
