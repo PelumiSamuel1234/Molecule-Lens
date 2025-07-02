@@ -32,7 +32,16 @@ const MoleculeView: React.FC<MoleculeViewProps> = ({ data, geminiContent, gemini
         </InfoCard>
 
         <InfoCard title="3D Conformer">
-          <div className="aspect-square border rounded-md shadow-sm overflow-hidden">
+          <InfoCard title="3D Conformer">
+  <div className="w-full h-72 md:h-96 border rounded-md shadow-sm overflow-hidden">
+    <iframe
+      src={data.iframeSrc3D}
+      title={`${data.name} 3D Conformer`}
+      className="w-full h-full border-0"
+      loading="lazy"
+    ></iframe>
+  </div>
+</InfoCard>
             <iframe
               src={data.iframeSrc3D}
               title={`${data.name} 3D Conformer`}
