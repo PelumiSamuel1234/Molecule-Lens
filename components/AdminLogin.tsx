@@ -1,83 +1,32 @@
+import React from 'react';
 
-import React, { useState } from 'react';
-
-interface AdminLoginProps {
-  onLoginSuccess: () => void;
+interface ErrorMessageProps {
+  message: string;
+  title?: string;
 }
 
-const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(''); // Clear previous errors
-    if (username === 'root' && password === 'root') {
-      onLoginSuccess();
-    } else {
-      setError('Invalid username or password.');
-    }
-  };
-
-  const handleBackToMain = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    window.location.hash = ''; 
-  };
-
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, title = "Oops! Something went wrong" }) => {
   return (
-    <div className="container mx-auto max-w-md mt-20 p-8 bg-white rounded-lg shadow-xl animate-fadeInUp">
-      <h2 className="text-3xl font-bold text-brand-primary text-center mb-8">Admin Login</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username" // for accessibility and form handling
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
-            required
-            aria-required="true"
-            autoComplete="username"
-          />
+    <div className="my-6 mx-auto max-w-2xl animate-fadeInUp" role="alert">
+      <div className="bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-500 rounded-lg shadow-lg overflow-hidden">
+        <div className="p-6">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0">
+              <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-red-800 mb-1">{title}</h3>
+              <p className="text-red-700 leading-relaxed">{message}</p>
+            </div>
+          </div>
         </div>
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password" // for accessibility and form handling
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary sm:text-sm"
-            required
-            aria-required="true"
-            autoComplete="current-password"
-          />
-        </div>
-        {error && <p className="text-sm text-red-600" role="alert">{error}</p>}
-        <div>
-          <button
-            type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-primary hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary transition-colors"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-       <p className="mt-6 text-center text-sm text-gray-500">
-        <a href="#" onClick={handleBackToMain} className="text-brand-primary hover:underline">
-          Back to Main App
-        </a>
-      </p>
+      </div>
     </div>
   );
 };
 
-export default AdminLogin;
+export default ErrorMessage;
